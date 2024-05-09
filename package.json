@@ -15,8 +15,9 @@
   "devDependencies": {
     "@badeball/cypress-cucumber-preprocessor": "^20.0.5",
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
-    "cypress": "^13.9.0",
-    "cypress-mochawesome-reporter": "^3.8.2"
+    "cypress": "^13.8.1",
+    "cypress-mochawesome-reporter": "^3.8.2",
+    "faker": "^6.6.6"
   },
   "cypress-cucumber-preprocessor": {
     "stepDefinitions": [

@@ -1,5 +1,5 @@
-// const { When, Then } = require("@badeball/cypress-cucumber-preprocessor");
-import { When, Then } from "@badeball/cypress-cucumber-preprocessor";
+// const { Given, When, Then } = require("@badeball/cypress-cucumber-preprocessor");
+import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 
 When("I visit duckduckgo.com", () => {
   cy.visit("https://duckduckgo.com/");

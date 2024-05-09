@@ -27,7 +27,7 @@ async function setupNodeEvents(on, config) {
 
 module.exports = defineConfig({
   e2e: {
-    baseUrl: "https://duckduckgo.com",
+    baseUrl: "https://www.myer.com.au/",
     specPattern: "**/*.feature",
     setupNodeEvents,
     // Enable "record and playback" feature
