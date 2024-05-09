@@ -1,3 +1,4 @@
+/// <reference types="cypress" />
 const { defineConfig } = require("cypress");
 const createBundler = require("@bahmutov/cypress-esbuild-preprocessor");
 const {
@@ -27,6 +28,11 @@ async function setupNodeEvents(on, config) {
 
 module.exports = defineConfig({
   e2e: {
+    env:{
+      commandDelay: 500, 
+      //commandDelay: false, disable command delay
+    },
+    // supportFile: "cypress/support/index.js",
     baseUrl: "https://www.myer.com.au/",
     specPattern: "**/*.feature",
     setupNodeEvents,
@@ -48,9 +54,9 @@ module.exports = defineConfig({
     viewportWidth: 1920,
     viewportHeight: 1080,
     // Time, in milliseconds, to wait until most DOM based commands are considered timed out.
-    defaultCommandTimeout: 3000,
+    defaultCommandTimeout: 10000,
     // Time, in milliseconds, to wait for page transition events or cy.visit(), cy.go(), cy.reload() commands to fire their page load events.
-    pageLoadTimeout: 10000,
+    pageLoadTimeout: 30000,
   },
   //configure cypress mocha awesome reporter
   reporter: "cypress-mochawesome-reporter",

@@ -8,19 +8,23 @@ import {
   Then,
 } from "@badeball/cypress-cucumber-preprocessor";
 
+BeforeAll(function () {
+  // This hook will be executed once at the beginnig of a feature.
+  cy.generateFakeData();
+});
+
 // In your test file
-// BeforeAll(function () {
-//   // This hook will be executed once at the beginnig of a feature.
-//   cy.log("Before all");
-//   cy.generateFakeData();
-// });
+Before(() => {
+  cy.fixture("dataFake").then((dataFake) => {
+    this.dataFake = dataFake[dataFake.length - 1];
+  });
+});
+
 // beforeEach(function () {
 // Before( function() {
 
 //   //way 1: data Global - define in before hook and use in all TCs by using this.data
-//   cy.fixture("data").then(function (data) {
-//     this.data = data;
-//   });
+
 //   cy.fixture("invalidLogin").then((invalidLogin) => {
 //     this.invalidLogin = invalidLogin;
 //   });
@@ -29,6 +33,7 @@ import {
 
 Given("I am on the Myer Home page", () => {
   cy.visit("/");
+  cy.log("this.dataFake.randTime: ", this.dataFake.randTime);
 });
 
 When("I clicks on Join button to go to the Myer Create Account page", () => {
@@ -43,28 +48,39 @@ When("I clicks on Join button to go to the Myer Create Account page", () => {
 });
 
 When("I fill out the registration form with valid details", () => {
+  // Generate the current time in milliseconds
+  // const currentTime = Date.now();
   //input email
-  cy.get("#email").type("testmyer1@mailnesia.com");
+  cy.get("#email").should("be.enabled");
+  
+  cy.get("#email").type(`${this.dataFake.randEmail}`, {
+    force: true,
+  });
 
   //click on Join button
   cy.get("button[class^='MuiButtonBase-root']:first-child").click();
 
   //input password
-  cy.get("#password").type("Aa123456@");
+  cy.get("#password").type(`${this.dataFake.randPassword}`);
 
   //input first name
-  cy.get("#first-name").type("test");
+  cy.get("#first-name").type(`${this.dataFake.randFirstName}`);
   //input last name
-  cy.get("#last-name").type("myer1");
+  cy.get("#last-name").type(`${this.dataFake.randLastName}`);
 
   //input email
-  cy.get("#mobile-phone").type("0412345678");
+  cy.get("#mobile-phone").type(`${this.dataFake.randPhone}`);
 
   //input DOB
-  cy.get("#date-of-birth").type("25/12/1990");
+  cy.get("#date-of-birth").type(`${this.dataFake.randDOB}`);
 
   //input Address
-  cy.get("#address").type("1 Hanoi Way, HOCKING  WA 6065");
+  cy.get("#address").type("1 Hanoi");
+
+  // cy.wait(1000);
+
+  //select first recommendation address
+  cy.get("div[role='button']:first-child").click({force: true});
 });
 
 When("I submit the registration form", () => {
@@ -76,6 +92,15 @@ Then("I should see a success message confirming my account creation", () => {
   //verify text contains
   cy.contains(
     "Your account is active. There was a temporary issue registering your MYER one. Please try again"
+  );
+  cy.writeToJson(
+    "./cypress/fixtures/myerAccount.json",
+    `${this.dataFake.randEmail}`,
+    `${this.dataFake.randPassword}`,
+    `${this.dataFake.randFirstName}`,
+    `${this.dataFake.randLastName}`,
+    `${this.dataFake.randPhone}`,
+    `${this.dataFake.randDOB}`
   );
 });
 

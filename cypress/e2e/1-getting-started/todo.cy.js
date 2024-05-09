@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-
+// import '../../support/commands'
 // Welcome to Cypress!
 //
 // This spec file contains a variety of sample tests
@@ -13,11 +13,20 @@
 
 describe('example to-do app', () => {
   beforeEach(() => {
+
     // Cypress starts out with a blank slate for each test
     // so we must tell it to visit our website with the `cy.visit()` command.
     // Since we want to visit the same URL at the start of all our tests,
     // we include it in our beforeEach function so that it runs before each test
     cy.visit('https://example.cypress.io/todo')
+    // cy.loginByApi("jdoe", "password123").then((response) => {
+    //   expect(response.status).to.eq(200)
+    // })
+    // cy.dismiss123();
+    // cy.clickLink('Buy Now')
+
+
+    cy.generateFakeData();
   })
 
   it('displays two todo items by default', () => {

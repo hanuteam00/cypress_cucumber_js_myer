@@ -1,5 +1,9 @@
+/// <reference types="cypress" />
 // require('cypress-xpath');
-require("cypress-plugin-tab");
+// require("cypress-plugin-tab");
+// import { faker } from "@faker-js/faker";
+const { faker } = require("@faker-js/faker");
+
 // ***********************************************
 // This example commands.js shows you how to
 // create various custom commands and overwrite
@@ -26,8 +30,26 @@ require("cypress-plugin-tab");
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-import { faker } from "@faker-js/faker";
+// declare namespace Cypress { interface Chainable<Subject = any> { login(): any; } }
 
+Cypress.Commands.add(
+  "dismiss123",
+  { prevSubject: "optional" },
+  (subject, options) => {
+    cy.log("dismiss 123");
+  }
+);
+
+Cypress.Commands.add("clickLink", (label) => {
+  cy.get("a").contains(label).click();
+});
+
+Cypress.Commands.add("loginByApi", (username, password) => {
+  return cy.request("POST", `http://localhost:3000/login`, {
+    username,
+    password,
+  });
+});
 Cypress.Commands.add("loginByAPI_full", (email, password) => {
   cy.session([email, password], () => {
     //step 1: send request to get token
@@ -211,14 +233,100 @@ Cypress.Commands.add('writeDataToFile', (fileNamePath, data1, data2, data3) => {
 Cypress.Commands.add("generateFakeData", () => {
   const filename1 = "cypress/fixtures/dataFake.json";
 
-  let randPassword = faker.internet.password();
-  let randFirstName = faker.name.firstName();
-  let randLastName = faker.name.lastName();
+  // let randPassword = faker.internet.password();
+
+  // Generate a random password that meets the criteria
+  /*
+      8 characters long
+      Contains at least 1 uppercase letter
+      Contains at least 1 number
+  */
+  let generateRandomPassword = () => {
+    const uppercaseLetter = /[A-Z]/;
+    const number = /[0-9]/;
+
+    let password = "";
+
+    // Generate the first character as an uppercase letter
+    password += faker.helpers.arrayElement("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+
+    // Generate the rest of the characters
+    for (let i = 1; i < 8; i++) {
+      const randomChar = faker.random.alphaNumeric(1);
+      // Ensure that at least one character is a number and one is uppercase
+      if (password.match(uppercaseLetter) === null && i < 7) {
+        password += faker.helpers.arrayElement("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+      } else if (password.match(number) === null && i < 7) {
+        password += faker.helpers.arrayElement("0123456789");
+      } else {
+        password += randomChar;
+      }
+    }
+
+    return password;
+  };
+
+  // Usage
+  let randPassword = generateRandomPassword();
+
+  // Function to generate a random first name with only alphabetic characters
+  const generateRandomFirstName = () => {
+    let firstName = faker.name.firstName();
+
+    // Remove any non-alphabetic characters
+    firstName = firstName.replace(/[^a-zA-Z]/g, "");
+
+    return firstName;
+  };
+
+  // Usage
+  const randFirstName = generateRandomFirstName();
+  console.log(randFirstName);
+
+  // let randFirstName = faker.name.firstName();
+
+  // let randLastName = faker.name.lastName();
+
+  // Function to generate a random last name with only alphabetic characters
+  const generateRandomLastName = () => {
+    let lastName = faker.name.lastName();
+
+    // Remove any non-alphabetic characters
+    lastName = lastName.replace(/[^a-zA-Z]/g, "");
+
+    return lastName;
+  };
+
+  // Usage
+  const randLastName = generateRandomLastName();
+  console.log(randLastName);
+
   let randPhone = faker.phone
     .number("04########")
     .replace(/[^a-zA-Z0-9 ]/g, "");
   let randTime = Date.now();
-  let randEmail = randFirstName + randLastName + "@gotitapp.co";
+  let randEmail = randFirstName + randLastName + "@mailnesia.com";
+  // let randDOB = faker.date.birthdate();
+
+  // Function to format date as DD/MM/YYYY
+  const formatDate = (date) => {
+    const day = date.getDate().toString().padStart(2, "0");
+    const month = (date.getMonth() + 1).toString().padStart(2, "0"); // Months are zero-based
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
+  };
+
+  // Function to generate random birthdate
+  const generateRandomBirthdate = () => {
+    // Generate a random date of birth within a reasonable range (e.g., 18-80 years old)
+    const minDate = new Date(new Date().getFullYear() - 80, 0, 1);
+    const maxDate = new Date(new Date().getFullYear() - 18, 11, 31);
+    const randomBirthdate = faker.date.between(minDate, maxDate);
+    return formatDate(randomBirthdate);
+  };
+
+  // Usage
+  let randDOB = generateRandomBirthdate();
 
   cy.readFile(filename1, (err, data) => {
     if (err) {
@@ -232,6 +340,7 @@ Cypress.Commands.add("generateFakeData", () => {
       randLastName: randLastName,
       randPhone: randPhone,
       randTime: randTime,
+      randDOB: randDOB,
     });
     cy.writeFile(filename1, data);
   });
@@ -269,7 +378,7 @@ Cypress.Commands.add("generateFakeData", () => {
 //write data after successful registration
 Cypress.Commands.add(
   "writeToJson",
-  (fileNamePath, data1, data2, data3, data4) => {
+  (fileNamePath, data1, data2, data3, data4, data5, data6) => {
     //Add data to json file
     const filename = fileNamePath;
     // cy.log('filename: ', filename)
@@ -282,8 +391,10 @@ Cypress.Commands.add(
       data.push({
         randEmail: data1,
         randPassword: data2,
-        randPhone: data3,
-        randTime: data4,
+        firstName: data3,
+        lastName: data4,
+        randPhone: data5,
+        randDOB: data6,
       });
       cy.writeFile(filename, data);
     });
