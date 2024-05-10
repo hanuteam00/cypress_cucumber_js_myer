@@ -268,5 +268,41 @@
     "randPhone": "0498555517",
     "randTime": 1715339795620,
     "randDOB": "08/02/1970"
+  },
+  {
+    "randEmail": "ShirleyFay@mailnesia.com",
+    "randPassword": "I0jRAiJQ",
+    "randFirstName": "Shirley",
+    "randLastName": "Fay",
+    "randPhone": "0454240389",
+    "randTime": 1715357591488,
+    "randDOB": "23/09/1987"
+  },
+  {
+    "randEmail": "EmilieBoyle@mailnesia.com",
+    "randPassword": "Z7nbYxRv",
+    "randFirstName": "Emilie",
+    "randLastName": "Boyle",
+    "randPhone": "0428907679",
+    "randTime": 1715357611297,
+    "randDOB": "07/10/1945"
+  },
+  {
+    "randEmail": "JessikaGottlieb@mailnesia.com",
+    "randPassword": "U7qgA290",
+    "randFirstName": "Jessika",
+    "randLastName": "Gottlieb",
+    "randPhone": "0452163613",
+    "randTime": 1715357636853,
+    "randDOB": "18/04/1955"
+  },
+  {
+    "randEmail": "FayeConsidine@mailnesia.com",
+    "randPassword": "V2rlvKkx",
+    "randFirstName": "Faye",
+    "randLastName": "Considine",
+    "randPhone": "0468295392",
+    "randTime": 1715357640647,
+    "randDOB": "04/06/1996"
   }
 ]

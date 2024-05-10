@@ -94,5 +94,13 @@
     "lastName": "Von",
     "randPhone": "0401403712",
     "randDOB": "30/11/1970"
+  },
+  {
+    "randEmail": "EmilieBoyle@mailnesia.com",
+    "randPassword": "Z7nbYxRv",
+    "firstName": "Emilie",
+    "lastName": "Boyle",
+    "randPhone": "0428907679",
+    "randDOB": "07/10/1945"
   }
 ]
