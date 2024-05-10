@@ -1,5 +1,13 @@
 /// <reference types="Cypress" />
-const { BeforeAll, Before,Given, When, Then } = require("@badeball/cypress-cucumber-preprocessor");
+const {
+  BeforeAll,
+  Before,
+  AfterAll,
+  After,
+  Given,
+  When,
+  Then,
+} = require("@badeball/cypress-cucumber-preprocessor");
 // import {
 //   BeforeAll,
 //   Before,
@@ -9,15 +17,23 @@ const { BeforeAll, Before,Given, When, Then } = require("@badeball/cypress-cucum
 // } from "@badeball/cypress-cucumber-preprocessor";
 
 BeforeAll(function () {
-  // This hook will be executed once at the beginnig of a feature.
   cy.generateFakeData();
+  cy.log("before all TCs");
 });
 
-// In your test file
 Before(() => {
   cy.fixture("dataFake").then((dataFake) => {
     this.dataFake = dataFake[dataFake.length - 1];
   });
+  cy.log("before each TC");
+});
+
+After(() => {
+  cy.log("after each TC");
+});
+
+AfterAll(function () {
+  cy.log("after all");
 });
 
 // beforeEach(function () {
@@ -52,7 +68,7 @@ When("I fill out the registration form with valid details", () => {
   // const currentTime = Date.now();
   //input email
   cy.get("#email").should("be.enabled");
-  
+
   cy.get("#email").type(`${this.dataFake.randEmail}`, {
     force: true,
   });
@@ -80,7 +96,7 @@ When("I fill out the registration form with valid details", () => {
   // cy.wait(1000);
 
   //select first recommendation address
-  cy.get("div[role='button']:first-child").click({force: true});
+  cy.get("div[role='button']:first-child").click({ force: true });
 });
 
 When("I submit the registration form", () => {

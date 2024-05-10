@@ -38,5 +38,61 @@
     "lastName": "Pfeffer",
     "randPhone": "0485529401",
     "randDOB": "03/05/1986"
+  },
+  {
+    "randEmail": "VelvaDAmore@mailnesia.com",
+    "randPassword": "D1Yr28QB",
+    "firstName": "Velva",
+    "lastName": "DAmore",
+    "randPhone": "0464638356",
+    "randDOB": "25/08/1986"
+  },
+  {
+    "randEmail": "KareemPurdy@mailnesia.com",
+    "randPassword": "G37s8jUB",
+    "firstName": "Kareem",
+    "lastName": "Purdy",
+    "randPhone": "0455695146",
+    "randDOB": "07/10/2000"
+  },
+  {
+    "randEmail": "JaimeEmard@mailnesia.com",
+    "randPassword": "L0GBhMZc",
+    "firstName": "Jaime",
+    "lastName": "Emard",
+    "randPhone": "0456048756",
+    "randDOB": "01/10/1956"
+  },
+  {
+    "randEmail": "SidPouros@mailnesia.com",
+    "randPassword": "S1UaRw4Y",
+    "firstName": "Sid",
+    "lastName": "Pouros",
+    "randPhone": "0406988375",
+    "randDOB": "23/06/1972"
+  },
+  {
+    "randEmail": "RosendoKrajcikHomenick@mailnesia.com",
+    "randPassword": "V0vtBjYy",
+    "firstName": "Rosendo",
+    "lastName": "KrajcikHomenick",
+    "randPhone": "0464140825",
+    "randDOB": "04/10/1997"
+  },
+  {
+    "randEmail": "JayceeProhaska@mailnesia.com",
+    "randPassword": "N73nc3kk",
+    "firstName": "Jaycee",
+    "lastName": "Prohaska",
+    "randPhone": "0418305227",
+    "randDOB": "27/06/1974"
+  },
+  {
+    "randEmail": "ArnaldoVon@mailnesia.com",
+    "randPassword": "L4qthqnN",
+    "firstName": "Arnaldo",
+    "lastName": "Von",
+    "randPhone": "0401403712",
+    "randDOB": "30/11/1970"
   }
 ]

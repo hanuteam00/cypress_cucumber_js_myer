@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "cy:open": "cypress open",
-    "cy:run": "cypress run",
-    "cy:chrome": "cypress run --browser chrome"
+    "cy:run": "cypress run --browser chrome",
+    "cy:chrome": "cypress run --headed --browser chrome"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +20,7 @@
     "cypress-mochawesome-reporter": "^3.8.2"
   },
   "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true,
     "stepDefinitions": [
       "cypress/e2e/tests/stepDefinitions/*.{js,ts}"
     ]

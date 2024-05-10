@@ -73,4 +73,5 @@ module.exports = defineConfig({
     saveAllAttempts: false,
     // reportDir: "cypress/results",
   },
+  projectId: "42jpi6",
 });
