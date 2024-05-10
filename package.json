@@ -8,7 +8,7 @@
     "cy:open": "cypress open",
     "cy:run": "cypress run --browser chrome",
     "cy:chrome": "cypress run --headed --browser chrome",
-    "start": "node server.js"
+    "start": "http-server"
   },
   "keywords": [],
   "author": "",
