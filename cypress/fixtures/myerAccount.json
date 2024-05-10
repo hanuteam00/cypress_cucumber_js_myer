@@ -6,5 +6,37 @@
     "lastName": "Mante",
     "randPhone": "0441946599",
     "randDOB": "19/01/1957"
+  },
+  {
+    "randEmail": "AronTrantow@mailnesia.com",
+    "randPassword": "X2HtRoNc",
+    "firstName": "Aron",
+    "lastName": "Trantow",
+    "randPhone": "0437687945",
+    "randDOB": "12/09/1970"
+  },
+  {
+    "randEmail": "IcieRodriguez@mailnesia.com",
+    "randPassword": "P9pFfsxY",
+    "firstName": "Icie",
+    "lastName": "Rodriguez",
+    "randPhone": "0488797866",
+    "randDOB": "06/06/1989"
+  },
+  {
+    "randEmail": "BereniceMcCullough@mailnesia.com",
+    "randPassword": "D7B1Sp9Y",
+    "firstName": "Berenice",
+    "lastName": "McCullough",
+    "randPhone": "0424660237",
+    "randDOB": "12/09/2004"
+  },
+  {
+    "randEmail": "SkylaPfeffer@mailnesia.com",
+    "randPassword": "J1tCOQM5",
+    "firstName": "Skyla",
+    "lastName": "Pfeffer",
+    "randPhone": "0485529401",
+    "randDOB": "03/05/1986"
   }
 ]

@@ -1,12 +1,12 @@
 /// <reference types="Cypress" />
-// const { Given, When, Then } = require("@badeball/cypress-cucumber-preprocessor");
-import {
-  BeforeAll,
-  Before,
-  Given,
-  When,
-  Then,
-} from "@badeball/cypress-cucumber-preprocessor";
+const { BeforeAll, Before,Given, When, Then } = require("@badeball/cypress-cucumber-preprocessor");
+// import {
+//   BeforeAll,
+//   Before,
+//   Given,
+//   When,
+//   Then,
+// } from "@badeball/cypress-cucumber-preprocessor";
 
 BeforeAll(function () {
   // This hook will be executed once at the beginnig of a feature.

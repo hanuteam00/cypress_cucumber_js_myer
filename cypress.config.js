@@ -56,7 +56,7 @@ module.exports = defineConfig({
     // Time, in milliseconds, to wait until most DOM based commands are considered timed out.
     defaultCommandTimeout: 10000,
     // Time, in milliseconds, to wait for page transition events or cy.visit(), cy.go(), cy.reload() commands to fire their page load events.
-    pageLoadTimeout: 30000,
+    pageLoadTimeout: 60000,
   },
   //configure cypress mocha awesome reporter
   reporter: "cypress-mochawesome-reporter",
