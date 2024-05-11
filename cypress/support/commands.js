@@ -230,8 +230,8 @@ Cypress.Commands.add('writeDataToFile', (fileNamePath, data1, data2, data3) => {
 })
 */
 
-Cypress.Commands.add("generateTestData", () => {
-  const filename1 = "cypress/fixtures/data.json";
+Cypress.Commands.add("generateFakeData", () => {
+  const filename1 = "cypress/fixtures/dataFake.json";
 
   // let randPassword = faker.internet.password();
 
@@ -304,7 +304,7 @@ Cypress.Commands.add("generateTestData", () => {
   let randPhone = faker.phone
     .number("04########")
     .replace(/[^a-zA-Z0-9 ]/g, "");
-  let randTime = Date.now();
+  // let randTime = Date.now();
   let randEmail = randFirstName + randLastName + "@mailnesia.com";
   // let randDOB = faker.date.birthdate();
 
@@ -339,7 +339,7 @@ Cypress.Commands.add("generateTestData", () => {
       randFirstName: randFirstName,
       randLastName: randLastName,
       randPhone: randPhone,
-      randTime: randTime,
+      // randTime: randTime,
       randDOB: randDOB,
     });
     cy.writeFile(filename1, data);

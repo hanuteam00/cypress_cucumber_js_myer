@@ -5,7 +5,7 @@ let data; // Define data globally
 
 BeforeAll(() => {
   // runs once before all tests
-  cy.generateTestData();
+  cy.generateFakeData();
 });
 
 Before(() => {

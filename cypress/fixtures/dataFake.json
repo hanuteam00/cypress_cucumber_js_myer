@@ -1,1 +1,26 @@
-[]
+[
+  {
+    "randEmail": "KoryRodriguez@mailnesia.com",
+    "randPassword": "F6F9Bxmj",
+    "randFirstName": "Kory",
+    "randLastName": "Rodriguez",
+    "randPhone": "0422593433",
+    "randDOB": "19/06/1959"
+  },
+  {
+    "randEmail": "MaiaMcDermott@mailnesia.com",
+    "randPassword": "N3CURI57",
+    "randFirstName": "Maia",
+    "randLastName": "McDermott",
+    "randPhone": "0444885611",
+    "randDOB": "02/05/1978"
+  },
+  {
+    "randEmail": "TheronReichelHalvorson@mailnesia.com",
+    "randPassword": "I3is9SZI",
+    "randFirstName": "Theron",
+    "randLastName": "ReichelHalvorson",
+    "randPhone": "0462103907",
+    "randDOB": "08/10/1981"
+  }
+]

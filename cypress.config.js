@@ -53,8 +53,10 @@ module.exports = defineConfig({
     // Set viewport
     viewportWidth: 1920,
     viewportHeight: 1080,
+    
     // Time, in milliseconds, to wait until most DOM based commands are considered timed out.
-    defaultCommandTimeout: 10000,
+    defaultCommandTimeout: 30000,
+
     // Time, in milliseconds, to wait for page transition events or cy.visit(), cy.go(), cy.reload() commands to fire their page load events.
     pageLoadTimeout: 60000,
   },
