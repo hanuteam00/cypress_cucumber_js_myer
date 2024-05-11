@@ -238,5 +238,29 @@
     "randLastName": "Ledner",
     "randPhone": "0430501258",
     "randDOB": "29/11/1981"
+  },
+  {
+    "randEmail": "EleanorePacocha@mailnesia.com",
+    "randPassword": "Y8OIhJI9",
+    "randFirstName": "Eleanore",
+    "randLastName": "Pacocha",
+    "randPhone": "0455553771",
+    "randDOB": "30/03/1982"
+  },
+  {
+    "randEmail": "DelilahHahn@mailnesia.com",
+    "randPassword": "E7eNB79X",
+    "randFirstName": "Delilah",
+    "randLastName": "Hahn",
+    "randPhone": "0478291436",
+    "randDOB": "05/02/1985"
+  },
+  {
+    "randEmail": "RevaCorwin@mailnesia.com",
+    "randPassword": "S3NRbOun",
+    "randFirstName": "Reva",
+    "randLastName": "Corwin",
+    "randPhone": "0400279175",
+    "randDOB": "12/05/1960"
   }
 ]

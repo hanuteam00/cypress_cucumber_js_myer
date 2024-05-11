@@ -1,6 +1,5 @@
 node_modules/
 inprogress/
-cypress/reports/html/
 cypress/reports/screenshots/
 cypress/reports/videos/
 cypress/screenshots/

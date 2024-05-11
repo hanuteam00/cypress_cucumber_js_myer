@@ -9,16 +9,18 @@ const {
   createEsbuildPlugin,
 } = require("@badeball/cypress-cucumber-preprocessor/esbuild");
 
+// Function to set up node events
 async function setupNodeEvents(on, config) {
-  // "cypress-on-fix" is required because "cypress-mochawesome-reporter" and "cypress-cucumber-preprocessor" use the same hooks
+  // Fixing issue with hook conflicts
   on = cypressOnFix(on);
 
-  // Use the plugin for mochawesome reporter
+  // Use the mochawesome reporter plugin
   require("cypress-mochawesome-reporter/plugin")(on);
 
-  // This is required for the preprocessor to be able to generate JSON reports after each run, and more,
+  // Add cucumber preprocessor plugin
   await addCucumberPreprocessorPlugin(on, config);
 
+  // Preprocess files using esbuild
   on(
     "file:preprocessor",
     createBundler({
@@ -26,59 +28,52 @@ async function setupNodeEvents(on, config) {
     })
   );
 
-  // Make sure to return the config object as it might have been modified by the plugin.
+  // Return the modified config object
   return config;
 }
 
+// Export Cypress configuration
 module.exports = defineConfig({
+  // Cypress configuration options
   e2e: {
+    // Environment variables
     env: {
-      commandDelay: 500,
-      //commandDelay: false, disable command delay
+      commandDelay: 500, // Delay between commands
     },
-    // supportFile: "cypress/support/index.js",
+    // Base URL for tests
     baseUrl: "https://www.myer.com.au/",
+    // Pattern to search for spec files
     specPattern: "**/*.feature",
-    // specPattern: ['**/*.feature', 'cypress/e2e/tests/features/*.feature'].
+    // Event setup function
     setupNodeEvents,
-    // Enable "record and playback" feature
+    // Experimental Studio
     experimentalStudio: true,
-    // Whether to enable Chromium-based browser's Web Security for same-origin policy and insecure mixed content.
+    // Disable Chrome Web Security
     chromeWebSecurity: false,
-
     // Enable video recording
     video: true,
-    // videosFolder: "cypress/reports/videos",
-
-    // Whether Cypress will take a screenshot when a test fails during cypress run.
+    // Enable screenshots on test failures
     screenshotOnRunFailure: true,
+    // Trash assets before runs
     trashAssetsBeforeRuns: false,
-    // screenshotsFolder: "cypress/reports/screenshots",
-
-    // Set viewport
+    // Set viewport dimensions
     viewportWidth: 1920,
     viewportHeight: 1080,
-
-    // Time, in milliseconds, to wait until most DOM based commands are considered timed out.
-    defaultCommandTimeout: 30000,
-
-    // Time, in milliseconds, to wait for page transition events or cy.visit(), cy.go(), cy.reload() commands to fire their page load events.
-    pageLoadTimeout: 60000,
+    // Default command timeout
+    defaultCommandTimeout: 30000, // 30 seconds
+    // Page load timeout
+    pageLoadTimeout: 60000, // 1 minute
   },
-  //configure cypress mocha awesome reporter
+  // Configuration for Cypress mochawesome reporter
   reporter: "cypress-mochawesome-reporter",
-  //If you want to customize your HTML report with mochawesome-report-generator flags just add the flags you want to reporterOptions
-  //https://www.npmjs.com/package/cypress-mochawesome-reporter#custom-options
+  // Reporter options
   reporterOptions: {
-    //Genarates Chart in HTML report
-    charts: true,
+    charts: true, // Generate charts in HTML report
     reportPageTitle: "Cypress Inline Mochawesome Reporter",
-    //Screenshot will be embedded within the report
-    embeddedScreenshots: true,
-    //No separate assets folder will be created
-    inlineAssets: true,
-    saveAllAttempts: false,
-    // reportDir: "cypress/results",
+    embeddedScreenshots: true, // Embed screenshots within the report
+    inlineAssets: true, // No separate assets folder will be created
+    saveAllAttempts: false, // Save all attempts
   },
+  // Project ID
   projectId: "42jpi6",
 });

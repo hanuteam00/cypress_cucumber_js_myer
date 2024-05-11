@@ -1,7 +1,7 @@
 {
   "name": "cypress_cucumber_js_myer",
   "version": "1.0.0",
-  "description": "# I. Try it first Record a run in your terminal. npx cypress run --record --key 09ae033b-07ee-4572-892e-b75cf6fd732b",
+  "description": "Automated testing using Cypress and Cucumber for Myer project",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
