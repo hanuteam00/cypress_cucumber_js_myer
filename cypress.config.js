@@ -12,6 +12,7 @@ const {
 // Function to set up node events
 async function setupNodeEvents(on, config) {
   // Fixing issue with hook conflicts
+  // "cypress-on-fix" is required because "cypress-mochawesome-reporter" and "cypress-cucumber-preprocessor" use the same hooks
   on = cypressOnFix(on);
 
   // Use the mochawesome reporter plugin
@@ -51,11 +52,11 @@ module.exports = defineConfig({
     // Disable Chrome Web Security
     chromeWebSecurity: false,
     // Enable video recording
-    video: true,
+    // video: true,
     // Enable screenshots on test failures
-    screenshotOnRunFailure: true,
+    // screenshotOnRunFailure: true,
     // Trash assets before runs
-    trashAssetsBeforeRuns: false,
+    // trashAssetsBeforeRuns: false,
     // Set viewport dimensions
     viewportWidth: 1920,
     viewportHeight: 1080,
@@ -66,7 +67,8 @@ module.exports = defineConfig({
   },
   // Configuration for Cypress mochawesome reporter
   reporter: "cypress-mochawesome-reporter",
-  // Reporter options
+
+  /* Reporter options
   reporterOptions: {
     charts: true, // Generate charts in HTML report
     reportPageTitle: "Cypress Inline Mochawesome Reporter",
@@ -74,6 +76,7 @@ module.exports = defineConfig({
     inlineAssets: true, // No separate assets folder will be created
     saveAllAttempts: false, // Save all attempts
   },
+  */
   // Project ID
   projectId: "42jpi6",
 });
