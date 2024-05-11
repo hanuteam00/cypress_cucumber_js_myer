@@ -230,8 +230,8 @@ Cypress.Commands.add('writeDataToFile', (fileNamePath, data1, data2, data3) => {
 })
 */
 
-Cypress.Commands.add("generateFakeData", () => {
-  const filename1 = "cypress/fixtures/dataFake.json";
+Cypress.Commands.add("generateTestData", () => {
+  const filename1 = "cypress/fixtures/data.json";
 
   // let randPassword = faker.internet.password();
 

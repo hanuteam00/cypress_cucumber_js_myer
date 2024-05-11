@@ -1,6 +1,21 @@
 /// <reference types="Cypress" />
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
-import { data } from './beforeTest'; // Import data from beforeTest.js
+// import { data } from "./beforeTest"; // Import data from beforeTest.js
+import { BeforeAll, Before } from "@badeball/cypress-cucumber-preprocessor";
+
+let data; // Define data globally
+
+BeforeAll(() => {
+  // runs once before all tests
+  cy.generateTestData();
+});
+
+Before(() => {
+  // runs before every test block
+  cy.fixture("data").then((dataTest) => {
+    data = dataTest[dataTest.length - 1];
+  });
+});
 
 Given("I am on the Myer Home page", () => {
   //Visit Home page
@@ -11,7 +26,7 @@ Given("I am on the Myer Home page", () => {
     "MYER | Shop Fashion, Homewares, Beauty, Toys & More"
   );
   // cy.log("data.randTime: ", data.randTime);
-  cy.wait(2000);
+
 });
 
 When("I clicks on Join button to go to the Myer Create Account page", () => {
@@ -24,6 +39,8 @@ When("I clicks on Join button to go to the Myer Create Account page", () => {
   //verify user is navigated to Join page
   cy.url().should("include", "/join");
   cy.title().should("contain", "Join | MYER");
+  cy.wait(2000);
+
 });
 
 When("I fill out the registration form with valid details", () => {
@@ -71,7 +88,7 @@ Then("I should see a success message confirming my account creation", () => {
   cy.contains(
     "Your account is active. There was a temporary issue registering your MYER one. Please try again"
   );
-  
+
   cy.contains(`Hello ${data.randFirstName}`);
 
   //write information of successful account creation to a json file
@@ -86,26 +103,38 @@ Then("I should see a success message confirming my account creation", () => {
   );
 });
 
-When("I fill out the registration form with an invalid email", () => {
-  cy.get("#firstName").type("John");
-  cy.get("#lastName").type("Doe");
-  cy.get("#email").type("invalid-email");
-  cy.get("#password").type("password123");
-  cy.get("#confirmPassword").type("password123");
+When("I click on the Login button to go to the Myer Login page", () => {
+  //verify Sign in/Join button is visible
+  cy.get("button[data-automation='header-account']").should("be.visible");
+  //click on Sign in/Join button
+  cy.get("button[data-automation='header-account']").click();
+  //click on Join link
+  cy.get("#dropdownLoginLink").click();
+  //verify user is navigated to Join page
+  cy.url().should("include", "/login");
+  cy.title().should("contain", "Sign in | MYER");
 });
 
-When("I fill out the registration form with mismatched passwords", () => {
-  cy.get("#firstName").type("John");
-  cy.get("#lastName").type("Doe");
-  cy.get("#email").type("example@example.com");
-  cy.get("#password").type("password123");
-  cy.get("#confirmPassword").type("password456");
+When("I enter my newly created account credentials", () => {
+  // Retrieve the credentials from the JSON file
+  cy.fixture("myerAccount").then((accounts) => {
+    // Get the latest account (assuming it's the last item in the array)
+    const latestAccount = accounts[accounts.length - 1];
+
+    // Fill in email and password fields
+    cy.get("#username").type(latestAccount.randEmail);
+    cy.get("#password").type(latestAccount.randPassword);
+  });
 });
 
-Then("I should see an error message indicating invalid email", () => {
-  cy.get('[data-testid="error-message"]').contains("Invalid email");
+When("I submit the login form", () => {
+  // Click on the Sign In button
+  cy.wait(15000)
+  cy.get("button[value='default']").click();
 });
 
-Then("I should see an error message indicating password mismatch", () => {
-  cy.get('[data-testid="error-message"]').contains("Passwords do not match");
+Then("I should be redirected to the Myer MFA SMS Challenge", () => {
+  // Verify that the user is redirected to the dashboard
+  cy.url().should("include", "/mfa-sms-challenge");
+  cy.contains("Verify your identity").should("be.visible");
 });

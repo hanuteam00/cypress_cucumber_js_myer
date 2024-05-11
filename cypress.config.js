@@ -35,6 +35,7 @@ module.exports = defineConfig({
     // supportFile: "cypress/support/index.js",
     baseUrl: "https://www.myer.com.au/",
     specPattern: "**/*.feature",
+    // specPattern: ['**/*.feature', 'cypress/e2e/tests/features/*.feature'].
     setupNodeEvents,
     // Enable "record and playback" feature
     experimentalStudio: true,
