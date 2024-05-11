@@ -1,47 +1,17 @@
 /// <reference types="Cypress" />
-const {
-  BeforeAll,
-  Before,
-  AfterAll,
-  After,
-  Given,
-  When,
-  Then,
-} = require("@badeball/cypress-cucumber-preprocessor");
-// import {
-//   BeforeAll,
-//   Before,
-//   Given,
-//   When,
-//   Then,
-// } from "@badeball/cypress-cucumber-preprocessor";
-
-BeforeAll(function () {
-  cy.generateFakeData();
-  cy.log("before all TCs");
-});
-
-Before(() => {
-  cy.fixture("dataFake").then((dataFake) => {
-    this.dataFake = dataFake[dataFake.length - 1];
-  });
-  cy.log("before each TC");
-});
-
-After(() => {
-  cy.log("after each TC");
-});
-
-AfterAll(function () {
-  cy.log("after all");
-});
+import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
+import { data } from './beforeTest'; // Import data from beforeTest.js
 
 Given("I am on the Myer Home page", () => {
   //Visit Home page
   cy.visit("/");
   //Verify user is on the Home page
-  cy.title().should("contain", "MYER | Shop Fashion, Homewares, Beauty, Toys & More");
-  // cy.log("this.dataFake.randTime: ", this.dataFake.randTime);
+  cy.title().should(
+    "contain",
+    "MYER | Shop Fashion, Homewares, Beauty, Toys & More"
+  );
+  // cy.log("data.randTime: ", data.randTime);
+  cy.wait(2000);
 });
 
 When("I clicks on Join button to go to the Myer Create Account page", () => {
@@ -53,34 +23,34 @@ When("I clicks on Join button to go to the Myer Create Account page", () => {
   cy.get("#dropdownJoinLink").click();
   //verify user is navigated to Join page
   cy.url().should("include", "/join");
+  cy.title().should("contain", "Join | MYER");
 });
 
 When("I fill out the registration form with valid details", () => {
-  // Generate the current time in milliseconds
-  // const currentTime = Date.now();
   //input email
   cy.get("#email").should("be.enabled");
 
-  cy.get("#email").type(`${this.dataFake.randEmail}`, {
+  cy.get("#email").type(`${data.randEmail}`, {
     force: true,
+    delay: 50,
   });
 
   //click on Join button
   cy.get("button[class^='MuiButtonBase-root']:first-child").click();
 
   //input password
-  cy.get("#password").type(`${this.dataFake.randPassword}`);
+  cy.get("#password").type(`${data.randPassword}`);
 
   //input first name
-  cy.get("#first-name").type(`${this.dataFake.randFirstName}`);
+  cy.get("#first-name").type(`${data.randFirstName}`);
   //input last name
-  cy.get("#last-name").type(`${this.dataFake.randLastName}`);
+  cy.get("#last-name").type(`${data.randLastName}`);
 
   //input email
-  cy.get("#mobile-phone").type(`${this.dataFake.randPhone}`);
+  cy.get("#mobile-phone").type(`${data.randPhone}`);
 
   //input DOB
-  cy.get("#date-of-birth").type(`${this.dataFake.randDOB}`);
+  cy.get("#date-of-birth").type(`${data.randDOB}`);
 
   //input Address
   cy.get("#address").type("1 Hanoi");
@@ -101,14 +71,18 @@ Then("I should see a success message confirming my account creation", () => {
   cy.contains(
     "Your account is active. There was a temporary issue registering your MYER one. Please try again"
   );
+  
+  cy.contains(`Hello ${data.randFirstName}`);
+
+  //write information of successful account creation to a json file
   cy.writeToJson(
     "./cypress/fixtures/myerAccount.json",
-    `${this.dataFake.randEmail}`,
-    `${this.dataFake.randPassword}`,
-    `${this.dataFake.randFirstName}`,
-    `${this.dataFake.randLastName}`,
-    `${this.dataFake.randPhone}`,
-    `${this.dataFake.randDOB}`
+    `${data.randEmail}`,
+    `${data.randPassword}`,
+    `${data.randFirstName}`,
+    `${data.randLastName}`,
+    `${data.randPhone}`,
+    `${data.randDOB}`
   );
 });
 
