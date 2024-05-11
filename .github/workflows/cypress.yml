@@ -45,7 +45,7 @@ jobs:
           record: true
           parallel: true # Runs test in parallel using settings above
           # reporterOptions: "{\"reportDir\": \"cypress/reports/html\"}" # Specify the output folder for Cypress reports
-          spec: "cypress/e2e/step_definitions/*.{js,ts}" # Specify the test files to run
+          # spec: "cypress/e2e/step_definitions/*.{js,ts}" # Specify the test files to run
         env:
           # For recording and parallelization to work you must set your CYPRESS_RECORD_KEY
           # in GitHub repo → Settings → Secrets → Actions
