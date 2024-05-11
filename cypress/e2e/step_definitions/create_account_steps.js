@@ -1,96 +1,70 @@
 /// <reference types="Cypress" />
+
+// Importing necessary libraries and page objects
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
-// import { data } from "./beforeTest"; // Import data from beforeTest.js
 import { BeforeAll, Before } from "@badeball/cypress-cucumber-preprocessor";
+import SignupPage from "../pages/SignupPage";
+import HomePage from "../pages/HomePage";
 
-let data; // Define data globally
+// Creating instances of page objects
+const signupPage = new SignupPage();
+const homePage = new HomePage();
 
+// Hook to run once before all tests
 BeforeAll(() => {
-  // runs once before all tests
   cy.generateTestData();
 });
 
+// Hook to run before every test block
 Before(() => {
-  // runs before every test block
   cy.fixture("data").then((dataTest) => {
     data = dataTest[dataTest.length - 1];
   });
 });
 
+// Step definition for navigating to the Myer Home page
 Given("I am on the Myer Home page", () => {
-  //Visit Home page
   cy.visit("/");
-  //Verify user is on the Home page
   cy.title().should(
     "contain",
     "MYER | Shop Fashion, Homewares, Beauty, Toys & More"
   );
-  // cy.log("data.randTime: ", data.randTime);
-
 });
 
+// Step definition for clicking on the Join button to go to the Myer Create Account page
 When("I clicks on Join button to go to the Myer Create Account page", () => {
-  //verify Sign in/Join button is visible
-  cy.get("button[data-automation='header-account']").should("be.visible");
-  //click on Sign in/Join button
-  cy.get("button[data-automation='header-account']").click();
-  //click on Join link
-  cy.get("#dropdownJoinLink").click();
-  //verify user is navigated to Join page
+  homePage.accountMenu.should("be.visible").click();
+  homePage.joinLink.click();
   cy.url().should("include", "/join");
   cy.title().should("contain", "Join | MYER");
-
 });
 
+// Step definition for filling out the registration form with valid details
 When("I fill out the registration form with valid details", () => {
-  //input email
-  cy.get("#email").should("be.enabled");
-
-  cy.get("#email").type(`${data.randEmail}`, {
-    force: true,
-    delay: 50,
-  });
-
-  //click on Join button
-  cy.get("button[class^='MuiButtonBase-root']:first-child").click({force: true});
-
-  //input password
-  cy.get("#password").type(`${data.randPassword}`);
-
-  //input first name
-  cy.get("#first-name").type(`${data.randFirstName}`);
-  //input last name
-  cy.get("#last-name").type(`${data.randLastName}`);
-
-  //input email
-  cy.get("#mobile-phone").type(`${data.randPhone}`);
-
-  //input DOB
-  cy.get("#date-of-birth").type(`${data.randDOB}`);
-
-  //input Address
-  cy.get("#address").type("1 Hanoi");
-
-  // cy.wait(1000);
-
-  //select first recommendation address
-  cy.get("div[role='button']:first-child").click({ force: true });
+  signupPage.email
+    .should("be.visible")
+    .type(`${data.randEmail}`, { force: true, delay: 50 });
+  signupPage.joinButton.click({ force: true });
+  signupPage.password.type(`${data.randPassword}`);
+  signupPage.firstName.type(`${data.randFirstName}`);
+  signupPage.lastName.type(`${data.randLastName}`);
+  signupPage.phoneNumber.type(`${data.randPhone}`);
+  signupPage.dob.type(`${data.randDOB}`);
+  signupPage.address.type("1 Hanoi");
+  signupPage.firstRecommendationAddress.click({ force: true });
 });
 
+// Step definition for submitting the registration form
 When("I submit the registration form", () => {
-  //click on Create account
-  cy.get("#create-account").click();
+  signupPage.createButton.click();
 });
 
+// Step definition for verifying the success message confirming account creation
 Then("I should see a success message confirming my account creation", () => {
-  //verify text contains
   cy.contains(
     "Your account is active. There was a temporary issue registering your MYER one. Please try again"
   );
-
   cy.contains(`Hello ${data.randFirstName}`);
-
-  //write information of successful account creation to a json file
   cy.writeToJson(
     "./cypress/fixtures/myerAccount.json",
     `${data.randEmail}`,
@@ -100,39 +74,4 @@ Then("I should see a success message confirming my account creation", () => {
     `${data.randPhone}`,
     `${data.randDOB}`
   );
-});
-
-When("I click on the Login button to go to the Myer Login page", () => {
-  //verify Sign in/Join button is visible
-  cy.get("button[data-automation='header-account']").should("be.visible");
-  //click on Sign in/Join button
-  cy.get("button[data-automation='header-account']").click();
-  //click on Join link
-  cy.get("#dropdownLoginLink").click();
-  //verify user is navigated to Join page
-  cy.url().should("include", "/login");
-  cy.title().should("contain", "Sign in | MYER");
-});
-
-When("I enter my newly created account credentials", () => {
-  // Retrieve the credentials from the JSON file
-  cy.fixture("myerAccount").then((accounts) => {
-    // Get the latest account (assuming it's the last item in the array)
-    const latestAccount = accounts[accounts.length - 1];
-
-    // Fill in email and password fields
-    cy.get("#username").type(latestAccount.randEmail);
-    cy.get("#password").type(latestAccount.randPassword);
-  });
-});
-
-When("I submit the login form", () => {
-  // Click on the Sign In button
-  cy.get("button[value='default']").click({force: true});
-});
-
-Then("I should be redirected to the Myer MFA SMS Challenge", () => {
-  // Verify that the user is redirected to the dashboard
-  cy.url().should("include", "/mfa-sms-challenge");
-  cy.contains("Verify your identity").should("be.visible");
 });

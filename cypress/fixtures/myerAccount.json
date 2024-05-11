@@ -102,5 +102,61 @@
     "lastName": "Reynolds",
     "randPhone": "0431650633",
     "randDOB": "22/04/1992"
+  },
+  {
+    "randEmail": "VicenteGrimes@mailnesia.com",
+    "randPassword": "U8eaO1lr",
+    "firstName": "Vicente",
+    "lastName": "Grimes",
+    "randPhone": "0423528758",
+    "randDOB": "11/08/1978"
+  },
+  {
+    "randEmail": "GaetanoPowlowski@mailnesia.com",
+    "randPassword": "K13ehmjH",
+    "firstName": "Gaetano",
+    "lastName": "Powlowski",
+    "randPhone": "0429739938",
+    "randDOB": "15/03/1964"
+  },
+  {
+    "randEmail": "GeovanniZulauf@mailnesia.com",
+    "randPassword": "M7USXBiv",
+    "firstName": "Geovanni",
+    "lastName": "Zulauf",
+    "randPhone": "0489417357",
+    "randDOB": "16/05/1945"
+  },
+  {
+    "randEmail": "BernardWalker@mailnesia.com",
+    "randPassword": "A0190I13",
+    "firstName": "Bernard",
+    "lastName": "Walker",
+    "randPhone": "0415355982",
+    "randDOB": "15/06/1972"
+  },
+  {
+    "randEmail": "GwendolynBruen@mailnesia.com",
+    "randPassword": "T96FTnT7",
+    "firstName": "Gwendolyn",
+    "lastName": "Bruen",
+    "randPhone": "0417439033",
+    "randDOB": "07/06/1960"
+  },
+  {
+    "randEmail": "HankRunolfsson@mailnesia.com",
+    "randPassword": "L6JVa2Hh",
+    "firstName": "Hank",
+    "lastName": "Runolfsson",
+    "randPhone": "0477073260",
+    "randDOB": "06/10/1956"
+  },
+  {
+    "randEmail": "TristianLedner@mailnesia.com",
+    "randPassword": "N29cBblF",
+    "firstName": "Tristian",
+    "lastName": "Ledner",
+    "randPhone": "0430501258",
+    "randDOB": "29/11/1981"
   }
 ]
