@@ -52,7 +52,7 @@ When("I fill out the registration form with valid details", () => {
   });
 
   //click on Join button
-  cy.get("button[class^='MuiButtonBase-root']:first-child").click();
+  cy.get("button[class^='MuiButtonBase-root']:first-child").click({force: true});
 
   //input password
   cy.get("#password").type(`${data.randPassword}`);
