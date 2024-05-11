@@ -36,20 +36,12 @@ AfterAll(function () {
   cy.log("after all");
 });
 
-// beforeEach(function () {
-// Before( function() {
-
-//   //way 1: data Global - define in before hook and use in all TCs by using this.data
-
-//   cy.fixture("invalidLogin").then((invalidLogin) => {
-//     this.invalidLogin = invalidLogin;
-//   });
-//   cy.visi;
-// });
-
 Given("I am on the Myer Home page", () => {
+  //Visit Home page
   cy.visit("/");
-  cy.log("this.dataFake.randTime: ", this.dataFake.randTime);
+  //Verify user is on the Home page
+  cy.title().should("contain", "MYER | Shop Fashion, Homewares, Beauty, Toys & More");
+  // cy.log("this.dataFake.randTime: ", this.dataFake.randTime);
 });
 
 When("I clicks on Join button to go to the Myer Create Account page", () => {
