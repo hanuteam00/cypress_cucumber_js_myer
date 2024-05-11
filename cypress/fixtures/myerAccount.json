@@ -86,5 +86,13 @@
     "lastName": "Ullrich",
     "randPhone": "0480470552",
     "randDOB": "02/09/1947"
+  },
+  {
+    "randEmail": "AnnaliseMurray@mailnesia.com",
+    "randPassword": "T6JbN1e7",
+    "firstName": "Annalise",
+    "lastName": "Murray",
+    "randPhone": "0457771523",
+    "randDOB": "03/10/1979"
   }
 ]

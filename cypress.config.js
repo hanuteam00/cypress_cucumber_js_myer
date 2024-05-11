@@ -1,5 +1,6 @@
 /// <reference types="cypress" />
 const { defineConfig } = require("cypress");
+const cypressOnFix = require("cypress-on-fix");
 const createBundler = require("@bahmutov/cypress-esbuild-preprocessor");
 const {
   addCucumberPreprocessorPlugin,
@@ -8,8 +9,13 @@ const {
   createEsbuildPlugin,
 } = require("@badeball/cypress-cucumber-preprocessor/esbuild");
 
-
 async function setupNodeEvents(on, config) {
+  // "cypress-on-fix" is required because "cypress-mochawesome-reporter" and "cypress-cucumber-preprocessor" use the same hooks
+  on = cypressOnFix(on);
+
+  // Use the plugin for mochawesome reporter
+  require("cypress-mochawesome-reporter/plugin")(on);
+
   // This is required for the preprocessor to be able to generate JSON reports after each run, and more,
   await addCucumberPreprocessorPlugin(on, config);
 
@@ -19,8 +25,6 @@ async function setupNodeEvents(on, config) {
       plugins: [createEsbuildPlugin(config)],
     })
   );
-  // Use the plugin for mochawesome reporter
-  require("cypress-mochawesome-reporter/plugin")(on);
 
   // Make sure to return the config object as it might have been modified by the plugin.
   return config;
@@ -28,8 +32,8 @@ async function setupNodeEvents(on, config) {
 
 module.exports = defineConfig({
   e2e: {
-    env:{
-      commandDelay: 500, 
+    env: {
+      commandDelay: 500,
       //commandDelay: false, disable command delay
     },
     // supportFile: "cypress/support/index.js",
@@ -50,11 +54,11 @@ module.exports = defineConfig({
     screenshotOnRunFailure: true,
     trashAssetsBeforeRuns: false,
     screenshotsFolder: "cypress/reports/screenshots",
-    
+
     // Set viewport
     viewportWidth: 1920,
     viewportHeight: 1080,
-    
+
     // Time, in milliseconds, to wait until most DOM based commands are considered timed out.
     defaultCommandTimeout: 30000,
 

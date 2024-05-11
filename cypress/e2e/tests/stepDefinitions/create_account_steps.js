@@ -39,7 +39,6 @@ When("I clicks on Join button to go to the Myer Create Account page", () => {
   //verify user is navigated to Join page
   cy.url().should("include", "/join");
   cy.title().should("contain", "Join | MYER");
-  cy.wait(2000);
 
 });
 
@@ -129,8 +128,7 @@ When("I enter my newly created account credentials", () => {
 
 When("I submit the login form", () => {
   // Click on the Sign In button
-  cy.wait(15000)
-  cy.get("button[value='default']").click();
+  cy.get("button[value='default']").click({force: true});
 });
 
 Then("I should be redirected to the Myer MFA SMS Challenge", () => {

@@ -78,5 +78,45 @@
     "randLastName": "Stoltenberg",
     "randPhone": "0490059765",
     "randDOB": "06/03/1948"
+  },
+  {
+    "randEmail": "JadenMetz@mailnesia.com",
+    "randPassword": "A27vbW0d",
+    "randFirstName": "Jaden",
+    "randLastName": "Metz",
+    "randPhone": "0491061424",
+    "randDOB": "05/01/1991"
+  },
+  {
+    "randEmail": "GriffinParker@mailnesia.com",
+    "randPassword": "C2ARVK8C",
+    "randFirstName": "Griffin",
+    "randLastName": "Parker",
+    "randPhone": "0456536558",
+    "randDOB": "26/03/1958"
+  },
+  {
+    "randEmail": "EthelWyman@mailnesia.com",
+    "randPassword": "M3aiko3y",
+    "randFirstName": "Ethel",
+    "randLastName": "Wyman",
+    "randPhone": "0464997369",
+    "randDOB": "25/01/1999"
+  },
+  {
+    "randEmail": "TonyZulauf@mailnesia.com",
+    "randPassword": "F36j8Yao",
+    "randFirstName": "Tony",
+    "randLastName": "Zulauf",
+    "randPhone": "0407726162",
+    "randDOB": "20/10/1987"
+  },
+  {
+    "randEmail": "AnnaliseMurray@mailnesia.com",
+    "randPassword": "T6JbN1e7",
+    "randFirstName": "Annalise",
+    "randLastName": "Murray",
+    "randPhone": "0457771523",
+    "randDOB": "03/10/1979"
   }
 ]
