@@ -44,6 +44,7 @@ When("I fill out the registration form with valid details", () => {
   signupPage.email
     .should("be.visible")
     .type(`${data.randEmail}`, { force: true, delay: 50 });
+  cy.wait(1000);
   signupPage.joinButton.should("be.visible");
   signupPage.joinButton.click({ force: true });
   signupPage.password.type(`${data.randPassword}`);
