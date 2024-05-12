@@ -5,5 +5,3 @@ cypress/reports/videos/
 cypress/screenshots/
 cypress/videos/
 .github/workflows/
-.github/workflows/cypress.yml
-.github/
