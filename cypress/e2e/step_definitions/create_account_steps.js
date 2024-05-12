@@ -31,7 +31,7 @@ Given(/^I am on the Myer Home page$/, () => {
 });
 
 // Step definition for clicking on the Join button to go to the Myer Create Account page
-When(/^I click on the Join button to go to the Myer Create Account page$/, () => {
+When(/^I navigate to the Myer Create Account page by clicking on the Join button$/, () => {
   homePage.accountMenu.should("be.visible").click();
   homePage.joinLink.click();
   cy.url().should("include", "/join");
