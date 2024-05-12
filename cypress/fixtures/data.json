@@ -390,5 +390,13 @@
     "randLastName": "Lind",
     "randPhone": "0470588688",
     "randDOB": "29/06/1950"
+  },
+  {
+    "randEmail": "PamelaBednar@mailnesia.com",
+    "randPassword": "Y38R7EYt",
+    "randFirstName": "Pamela",
+    "randLastName": "Bednar",
+    "randPhone": "0423318445",
+    "randDOB": "07/07/1998"
   }
 ]

@@ -17,7 +17,11 @@
 
 2. Run using CLI
 
-- Type to run the test on Chrome browser: npm run cy:chrome
+- Type to run the test on Chrome browser:
+
+```
+   npm run cy:chrome
+```
 
 ## Part 3: Check report after test
 
@@ -27,4 +31,8 @@
 
 2. Open report using CLI
 
-- Type to open report: open ./cypress/reports/html/index.html
+- Type to open report:
+
+```
+   open ./cypress/reports/html/index.html
+```
