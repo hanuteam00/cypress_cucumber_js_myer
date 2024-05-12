@@ -1,8 +1,7 @@
 /// <reference types="Cypress" />
 
 // Importing necessary libraries and page objects
-import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
-import { BeforeAll, Before } from "@badeball/cypress-cucumber-preprocessor";
+import { Before, Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 import SignupPage from "../pages/SignupPage";
 import HomePage from "../pages/HomePage";
 
@@ -10,21 +9,21 @@ import HomePage from "../pages/HomePage";
 const signupPage = new SignupPage();
 const homePage = new HomePage();
 
-// Hook to run once before all tests
-BeforeAll(() => {
-  cy.generateTestData();
-});
+// Define data globally
+let data;
 
 // Hook to run before every test block
 Before(() => {
-  cy.fixture("data").then((dataTest) => {
-    data = dataTest[dataTest.length - 1];
+  cy.generateTestData().then(() => {
+    cy.fixture("data").then((dataTest) => {
+      data = dataTest[dataTest.length - 1];
+    });
   });
 });
 
 // Step definition for navigating to the Myer Home page
-Given("I am on the Myer Home page", () => {
-  cy.visit("/");
+Given(/^I am on the Myer Home page$/, () => {
+  cy.visit("https://www.myer.com.au/");
   cy.title().should(
     "contain",
     "MYER | Shop Fashion, Homewares, Beauty, Toys & More"
@@ -32,7 +31,7 @@ Given("I am on the Myer Home page", () => {
 });
 
 // Step definition for clicking on the Join button to go to the Myer Create Account page
-When("I clicks on Join button to go to the Myer Create Account page", () => {
+When(/^I click on the Join button to go to the Myer Create Account page$/, () => {
   homePage.accountMenu.should("be.visible").click();
   homePage.joinLink.click();
   cy.url().should("include", "/join");
@@ -40,10 +39,8 @@ When("I clicks on Join button to go to the Myer Create Account page", () => {
 });
 
 // Step definition for filling out the registration form with valid details
-When("I fill out the registration form with valid details", () => {
-  signupPage.email
-    .should("be.visible")
-    .type(`${data.randEmail}`);
+When(/^I fill out the registration form with valid details$/, () => {
+  signupPage.email.should("be.visible").type(`${data.randEmail}`);
   signupPage.joinButton.should("be.visible");
   signupPage.joinButton.click({ force: true });
   signupPage.password.type(`${data.randPassword}`);
@@ -56,13 +53,13 @@ When("I fill out the registration form with valid details", () => {
 });
 
 // Step definition for submitting the registration form
-When("I submit the registration form", () => {
+When(/^I submit the registration form$/, () => {
   signupPage.createButton.should("be.visible");
-  signupPage.createButton.click({force: true});
+  signupPage.createButton.click({ force: true });
 });
 
 // Step definition for verifying the success message confirming account creation
-Then("I should see a success message confirming my account creation", () => {
+Then(/^I should see a success message confirming my account creation$/, () => {
   cy.contains(
     "Your account is active. There was a temporary issue registering your MYER one. Please try again"
   );
