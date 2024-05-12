@@ -278,5 +278,29 @@
     "lastName": "Bednar",
     "randPhone": "0423318445",
     "randDOB": "07/07/1998"
+  },
+  {
+    "randEmail": "GardnerRyan@mailnesia.com",
+    "randPassword": "A1OqkAXc",
+    "firstName": "Gardner",
+    "lastName": "Ryan",
+    "randPhone": "0405253427",
+    "randDOB": "03/12/1994"
+  },
+  {
+    "randEmail": "PearlKerluke@mailnesia.com",
+    "randPassword": "X24lziKW",
+    "firstName": "Pearl",
+    "lastName": "Kerluke",
+    "randPhone": "0440775911",
+    "randDOB": "05/03/1963"
+  },
+  {
+    "randEmail": "GregoriaDenesik@mailnesia.com",
+    "randPassword": "Y17vPGIl",
+    "firstName": "Gregoria",
+    "lastName": "Denesik",
+    "randPhone": "0457346126",
+    "randDOB": "12/05/1946"
   }
 ]
