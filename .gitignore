@@ -4,3 +4,4 @@ cypress/reports/screenshots/
 cypress/reports/videos/
 cypress/screenshots/
 cypress/videos/
+.github/

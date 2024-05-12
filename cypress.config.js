@@ -16,7 +16,7 @@ async function setupNodeEvents(on, config) {
   on = cypressOnFix(on);
 
   // Use the mochawesome reporter plugin
-  require("cypress-mochawesome-reporter/plugin")(on);
+  // require("cypress-mochawesome-reporter/plugin")(on);
 
   // Add cucumber preprocessor plugin
   await addCucumberPreprocessorPlugin(on, config);
@@ -66,7 +66,7 @@ module.exports = defineConfig({
     pageLoadTimeout: 60000, // 1 minute
   },
   // Configuration for Cypress mochawesome reporter
-  reporter: "cypress-mochawesome-reporter",
+  // reporter: "cypress-mochawesome-reporter",
 
   /* Reporter options
   reporterOptions: {

@@ -43,7 +43,7 @@ When("I clicks on Join button to go to the Myer Create Account page", () => {
 When("I fill out the registration form with valid details", () => {
   signupPage.email
     .should("be.visible")
-    .type(`${data.randEmail}`, { force: true, delay: 50 });
+    .type(`${data.randEmail}`);
   signupPage.joinButton.should("be.visible");
   signupPage.joinButton.click({ force: true });
   signupPage.password.type(`${data.randPassword}`);
@@ -52,11 +52,12 @@ When("I fill out the registration form with valid details", () => {
   signupPage.phoneNumber.type(`${data.randPhone}`);
   signupPage.dob.type(`${data.randDOB}`);
   signupPage.address.type("1 Hanoi");
-  signupPage.firstRecommendationAddress.click({ force: true });
+  signupPage.firstRecommendationAddress.click();
 });
 
 // Step definition for submitting the registration form
 When("I submit the registration form", () => {
+  signupPage.createButton.should("be.visible");
   signupPage.createButton.click();
 });
 

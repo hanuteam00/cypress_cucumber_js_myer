@@ -174,5 +174,53 @@
     "lastName": "Corwin",
     "randPhone": "0400279175",
     "randDOB": "12/05/1960"
+  },
+  {
+    "randEmail": "ChasitySchimmel@mailnesia.com",
+    "randPassword": "R3WWGy7r",
+    "firstName": "Chasity",
+    "lastName": "Schimmel",
+    "randPhone": "0491673678",
+    "randDOB": "20/10/2005"
+  },
+  {
+    "randEmail": "GiaKutch@mailnesia.com",
+    "randPassword": "U8csSUJU",
+    "firstName": "Gia",
+    "lastName": "Kutch",
+    "randPhone": "0491656099",
+    "randDOB": "25/08/1962"
+  },
+  {
+    "randEmail": "JedHalvorson@mailnesia.com",
+    "randPassword": "I4dX0ESD",
+    "firstName": "Jed",
+    "lastName": "Halvorson",
+    "randPhone": "0441002492",
+    "randDOB": "21/07/1963"
+  },
+  {
+    "randEmail": "BrennanThompsonMedhurst@mailnesia.com",
+    "randPassword": "F0AHMEA2",
+    "firstName": "Brennan",
+    "lastName": "ThompsonMedhurst",
+    "randPhone": "0493114104",
+    "randDOB": "28/11/1944"
+  },
+  {
+    "randEmail": "OwenDare@mailnesia.com",
+    "randPassword": "I1eM6S0j",
+    "firstName": "Owen",
+    "lastName": "Dare",
+    "randPhone": "0449489373",
+    "randDOB": "18/08/1985"
+  },
+  {
+    "randEmail": "MaximeZemlak@mailnesia.com",
+    "randPassword": "Z9yypLhn",
+    "firstName": "Maxime",
+    "lastName": "Zemlak",
+    "randPhone": "0415033728",
+    "randDOB": "29/01/1979"
   }
 ]
