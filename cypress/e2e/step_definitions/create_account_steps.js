@@ -1,7 +1,12 @@
 /// <reference types="Cypress" />
 
 // Importing necessary libraries and page objects
-import { Before, Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
+import {
+  Before,
+  Given,
+  When,
+  Then,
+} from "@badeball/cypress-cucumber-preprocessor";
 import SignupPage from "../pages/SignupPage";
 import HomePage from "../pages/HomePage";
 
@@ -31,12 +36,15 @@ Given(/^I am on the Myer Home page$/, () => {
 });
 
 // Step definition for clicking on the Join button to go to the Myer Create Account page
-When(/^I navigate to the Myer Create Account page by clicking on the Join button$/, () => {
-  homePage.accountMenu.should("be.visible").click();
-  homePage.joinLink.click();
-  cy.url().should("include", "/join");
-  cy.title().should("contain", "Join | MYER");
-});
+When(
+  /^I navigate to the Myer Create Account page by clicking on the Join button$/,
+  () => {
+    homePage.accountMenu.should("be.visible").click();
+    homePage.joinLink.click();
+    cy.url().should("include", "/join");
+    cy.title().should("contain", "Join | MYER");
+  }
+);
 
 // Step definition for filling out the registration form with valid details
 When(/^I fill out the registration form with valid details$/, () => {
@@ -54,8 +62,11 @@ When(/^I fill out the registration form with valid details$/, () => {
 
 // Step definition for submitting the registration form
 When(/^I submit the registration form$/, () => {
-  signupPage.createButton.should("be.visible");
-  signupPage.createButton.click({ force: true });
+  // signupPage.createButton.should("be.visible").click({ force: true });
+  // Scroll to the create button
+  signupPage.createButton.scrollIntoView().should("be.visible");
+  // Click the create button
+  signupPage.createButton.click();
 });
 
 // Step definition for verifying the success message confirming account creation

@@ -61,9 +61,9 @@ module.exports = defineConfig({
     viewportWidth: 1920,
     viewportHeight: 1080,
     // Default command timeout
-    defaultCommandTimeout: 120000, // 30 seconds
+    defaultCommandTimeout: 10000, // 30 seconds
     // Page load timeout
-    pageLoadTimeout: 240000, // 1 minute
+    pageLoadTimeout: 60000, // 1 minute
   },
   // Configuration for Cypress mochawesome reporter
   reporter: "cypress-mochawesome-reporter",
